@@ -34,7 +34,7 @@ public:
     char check[] = {' ', 'x'};
 
     if (errorBefore && errorAfter) {
-      bool dec = errorBefore.get() > errorAfter.get();
+      bool dec = errorBefore->get() > errorAfter->get();
       sst1 << boost::format("%5s %15s %15s ") % "dec" % "e0" % "ei";
       sst2 << boost::format("%5c %15g %15g ") % check[dec] % errorBefore.get() % errorAfter.get();
     }
