@@ -43,6 +43,7 @@
 #include <memory>
 #include <numeric>
 #include <Eigen/Core>
+#include <cstdint>
 
 #include <gtsam_points/config.hpp>
 #include <gtsam_points/ann/knn_result.hpp>
