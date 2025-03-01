@@ -135,51 +135,51 @@ configure_file(include/gtsam_points/config.hpp.in include/gtsam_points/config.hp
 
 add_library(gtsam_points SHARED
   # util
-  src/gtsam_points/util/covariance_estimation.cpp
-  src/gtsam_points/util/normal_estimation.cpp
-  src/gtsam_points/util/bspline.cpp
-  src/gtsam_points/util/continuous_trajectory.cpp
+  # src/gtsam_points/util/covariance_estimation.cpp
+  # src/gtsam_points/util/normal_estimation.cpp
+  # src/gtsam_points/util/bspline.cpp
+  # src/gtsam_points/util/continuous_trajectory.cpp
   src/gtsam_points/util/parallelism.cpp
-  # ann
+  # # ann
   src/gtsam_points/ann/kdtree.cpp
-  src/gtsam_points/ann/intensity_kdtree.cpp
+  # src/gtsam_points/ann/intensity_kdtree.cpp
   src/gtsam_points/ann/ivox.cpp
-  src/gtsam_points/ann/incremental_covariance_container.cpp
-  src/gtsam_points/ann/incremental_covariance_voxelmap.cpp
-  # types
+  # src/gtsam_points/ann/incremental_covariance_container.cpp
+  # src/gtsam_points/ann/incremental_covariance_voxelmap.cpp
+  # # types
   src/gtsam_points/types/point_cloud.cpp
   src/gtsam_points/types/point_cloud_cpu.cpp
-  src/gtsam_points/types/gaussian_voxelmap_cpu.cpp
-  src/gtsam_points/types/gaussian_voxelmap_cpu_funcs.cpp
+  # src/gtsam_points/types/gaussian_voxelmap_cpu.cpp
+  # src/gtsam_points/types/gaussian_voxelmap_cpu_funcs.cpp
   # factors
-  src/gtsam_points/factors/integrated_matching_cost_factor.cpp
-  src/gtsam_points/factors/integrated_icp_factor.cpp
-  src/gtsam_points/factors/integrated_gicp_factor.cpp
-  src/gtsam_points/factors/integrated_vgicp_factor.cpp
-  src/gtsam_points/factors/integrated_loam_factor.cpp
-  src/gtsam_points/factors/intensity_gradients.cpp
-  src/gtsam_points/factors/integrated_colored_gicp_factor.cpp
-  src/gtsam_points/factors/integrated_color_consistency_factor.cpp
-  src/gtsam_points/factors/integrated_ct_icp_factor.cpp
-  src/gtsam_points/factors/integrated_ct_gicp_factor.cpp
-  src/gtsam_points/factors/bundle_adjustment_factor_evm.cpp
-  src/gtsam_points/factors/bundle_adjustment_factor_lsq.cpp
-  src/gtsam_points/factors/reintegrated_imu_factor.cpp
+  # src/gtsam_points/factors/integrated_matching_cost_factor.cpp
+  # src/gtsam_points/factors/integrated_icp_factor.cpp
+  # src/gtsam_points/factors/integrated_gicp_factor.cpp
+  # src/gtsam_points/factors/integrated_vgicp_factor.cpp
+  # src/gtsam_points/factors/integrated_loam_factor.cpp
+  # src/gtsam_points/factors/intensity_gradients.cpp
+  # src/gtsam_points/factors/integrated_colored_gicp_factor.cpp
+  # src/gtsam_points/factors/integrated_color_consistency_factor.cpp
+  # src/gtsam_points/factors/integrated_ct_icp_factor.cpp
+  # src/gtsam_points/factors/integrated_ct_gicp_factor.cpp
+  # src/gtsam_points/factors/bundle_adjustment_factor_evm.cpp
+  # src/gtsam_points/factors/bundle_adjustment_factor_lsq.cpp
+  # src/gtsam_points/factors/reintegrated_imu_factor.cpp
   # experimental
-  src/gtsam_points/factors/experimental/continuous_time_icp_factor.cpp
+  # src/gtsam_points/factors/experimental/continuous_time_icp_factor.cpp
   # optimizers
-  src/gtsam_points/optimizers/fast_scatter.cpp
-  src/gtsam_points/optimizers/linearization_hook.cpp
-  src/gtsam_points/optimizers/linear_system_builder.cpp
-  src/gtsam_points/optimizers/gaussian_factor_graph_solver.cpp
-  src/gtsam_points/optimizers/levenberg_marquardt_ext.cpp
-  src/gtsam_points/optimizers/levenberg_marquardt_optimization_status.cpp
-  src/gtsam_points/optimizers/isam2_ext.cpp
-  src/gtsam_points/optimizers/isam2_ext_impl.cpp
-  src/gtsam_points/optimizers/incremental_fixed_lag_smoother_ext.cpp
-  src/gtsam_points/optimizers/incremental_fixed_lag_smoother_ext_with_fallback.cpp
+  # src/gtsam_points/optimizers/fast_scatter.cpp
+  # src/gtsam_points/optimizers/linearization_hook.cpp
+  # src/gtsam_points/optimizers/linear_system_builder.cpp
+  # src/gtsam_points/optimizers/gaussian_factor_graph_solver.cpp
+  # src/gtsam_points/optimizers/levenberg_marquardt_ext.cpp
+  # src/gtsam_points/optimizers/levenberg_marquardt_optimization_status.cpp
+  # src/gtsam_points/optimizers/isam2_ext.cpp
+  # src/gtsam_points/optimizers/isam2_ext_impl.cpp
+  # src/gtsam_points/optimizers/incremental_fixed_lag_smoother_ext.cpp
+  # src/gtsam_points/optimizers/incremental_fixed_lag_smoother_ext_with_fallback.cpp
   # src/gtsam_points/optimizers/dogleg_optimizer_ext.cpp
-  src/gtsam_points/optimizers/dogleg_optimizer_ext_impl.cpp
+  # src/gtsam_points/optimizers/dogleg_optimizer_ext_impl.cpp
 )
 target_include_directories(gtsam_points PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -247,31 +247,31 @@ if(BUILD_WITH_CUDA)
   )
 endif()
 
-#Demo
-if(BUILD_DEMO)
-  find_package(Iridescence REQUIRED)
+# #Demo
+# if(BUILD_DEMO)
+#   find_package(Iridescence REQUIRED)
 
-  file(GLOB demo_sources "src/demo/*.cpp")
-  foreach(demo_src IN LISTS demo_sources)
-    get_filename_component(demo_name ${demo_src} NAME_WE)
+#   file(GLOB demo_sources "src/demo/*.cpp")
+#   foreach(demo_src IN LISTS demo_sources)
+#     get_filename_component(demo_name ${demo_src} NAME_WE)
 
-    add_executable(${demo_name} ${demo_src})
-    target_link_libraries(${demo_name} gtsam_points Iridescence::Iridescence)
-  endforeach()
-endif()
+#     add_executable(${demo_name} ${demo_src})
+#     target_link_libraries(${demo_name} gtsam_points Iridescence::Iridescence)
+#   endforeach()
+# endif()
 
-#Example
-if(BUILD_EXAMPLE)
-  find_package(Iridescence REQUIRED)
+# #Example
+# if(BUILD_EXAMPLE)
+#   find_package(Iridescence REQUIRED)
 
-  file(GLOB example_sources "src/example/*.cpp")
-  foreach(example_src IN LISTS example_sources)
-    get_filename_component(example_name ${example_src} NAME_WE)
+#   file(GLOB example_sources "src/example/*.cpp")
+#   foreach(example_src IN LISTS example_sources)
+#     get_filename_component(example_name ${example_src} NAME_WE)
 
-    add_executable(${example_name} ${example_src})
-    target_link_libraries(${example_name} gtsam_points Iridescence::Iridescence)
-  endforeach()
-endif()
+#     add_executable(${example_name} ${example_src})
+#     target_link_libraries(${example_name} gtsam_points Iridescence::Iridescence)
+#   endforeach()
+# endif()
 
 #Example
 if(BUILD_TOOLS)
