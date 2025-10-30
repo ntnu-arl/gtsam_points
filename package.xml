@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>gtsam_points</name>
+  <version>1.0.7</version>
+  <description>A collection of GTSAM factors for point cloud registration</description>
+  
+  <maintainer email="k.koide@aist.go.jp">k.koide</maintainer>
+  
+  <license>MIT</license>
+  
+  <url type="website">https://github.com/koide3/gtsam_points</url>
+  
+  <author email="k.koide@aist.go.jp">k.koide</author>
+  
+  <buildtool_depend>cmake</buildtool_depend>
+  
+  <!-- Core dependencies -->
+  <depend>boost</depend>
+  <depend>eigen</depend>
+  
+  <export>
+    <!-- Export flags for downstream packages -->
+    <build_type>cmake</build_type>
+  </export>
+</package>
