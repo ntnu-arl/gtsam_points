@@ -17,6 +17,7 @@
   <!-- Core dependencies -->
   <depend>boost</depend>
   <depend>eigen</depend>
+  <depend>gtsam</depend>
   
   <export>
     <!-- Export flags for downstream packages -->
