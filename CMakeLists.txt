@@ -31,6 +31,12 @@ endif()
 find_package(Boost REQUIRED COMPONENTS filesystem)
 find_package(GTSAM REQUIRED)
 find_package(Eigen3 REQUIRED)
+# Match the Eigen headers used to build GTSAM, including its bundled copy.
+if(TARGET gtsam_eigen3)
+  set(GTSAM_POINTS_EIGEN_TARGET gtsam_eigen3)
+else()
+  set(GTSAM_POINTS_EIGEN_TARGET Eigen3::Eigen)
+endif()
 
 if(BUILD_WITH_TBB)
   find_package(TBB REQUIRED)
@@ -190,7 +196,7 @@ target_include_directories(gtsam_points PUBLIC
 target_link_libraries(gtsam_points
   Boost::boost
   Boost::filesystem
-  Eigen3::Eigen
+  ${GTSAM_POINTS_EIGEN_TARGET}
   GTSAM::GTSAM
   $<TARGET_NAME_IF_EXISTS:TBB::tbb>
   $<TARGET_NAME_IF_EXISTS:OpenMP::OpenMP_CXX>
@@ -236,7 +242,7 @@ if(BUILD_WITH_CUDA)
   target_link_libraries(gtsam_points_cuda
     CUDA::cudart
     Boost::boost
-    Eigen3::Eigen
+    ${GTSAM_POINTS_EIGEN_TARGET}
     GTSAM::GTSAM
     $<TARGET_NAME_IF_EXISTS:TBB::tbb>
     $<TARGET_NAME_IF_EXISTS:OpenMP::OpenMP_CXX>
